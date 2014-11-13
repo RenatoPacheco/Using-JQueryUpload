@@ -1,0 +1,45 @@
+﻿body {
+  margin: 1em;
+}
+.comentario {
+  font-size: 0.8em;
+  color: #CCC;
+  font-weight: bold;
+}
+.arquivo label {
+  cursor: pointer;
+  display: inline-block;
+  background-image: url(../img/open_64_pb.png);
+  background-repeat: no-repeat;
+  width: 64px;
+  height: 64px;
+}
+.arquivo label.on {
+  background-image: url(../img/open_64.png);
+}
+.arquivo label span {
+  display: block;
+  vertical-align: middle;
+  margin-left: 0.5em;
+  overflow: hidden;
+  white-space: nowrap;
+  padding-left: 74px;
+  margin-top: 28px;
+}
+.arquivo input {
+  opacity: 0;
+  filter: alpha(opacity=0);
+  position: absolute;
+  left: -1000px;
+}
+form p {
+  margin: 0px;
+  padding: 0px;
+}
+form fieldset {
+  border: none;
+}
+form fieldset legend {
+  display: none;
+}
+/*# sourceMappingURL=my-style.css.map */

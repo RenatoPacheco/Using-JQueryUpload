@@ -1,11 +1,59 @@
-<!doctype html>
+﻿<!doctype html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
 	<title>Using-JqueryUpload</title>
+    <link href="css/normalize.css" rel="stylesheet" type="text/css">
+    <link href="css/my-style.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+    <script type="text/javascript" src="js/plugins/jQuery-File-Upload-9.8.0/js/vendor/jquery.ui.widget.js"></script>
+    <script type="text/javascript" src="js/plugins/jQuery-File-Upload-9.8.0/js/jquery.iframe-transport.js"></script>
+    <script type="text/javascript" src="js/plugins/jQuery-File-Upload-9.8.0/js/jquery.fileupload.js"></script>
+    <script type="text/javascript" src="js/my-script.js"></script>
 </head>
     <body>
-    
+    	<h1>Using-JqueryUpload</h1>
+        <h2>Servidor</h2>
+        <p>Selecione um servidor para testar:</p>
+        <p>
+            <span>
+                <input id="srv-no" type="radio" name="servidor" value="resultado.html" checked="checked" />
+                <label for="srv-no" title="Envia o arquivo mas não salva no seridor">Resultado Simulado</label>
+            </span>  
+        	<span>
+            	<input id="srv-php" type="radio" name="servidor" value="http://localhost:8888/Using-JQueryUpload/server/php/upload.php" />
+                <label for="srv-php" title="Envia o arquivo para o servidor PHP">Servidor PHP</label>
+            </span>            
+        	<span>
+            	<input id="srv-csharp" type="radio" name="servidor" value="http://localhost:8888/Using-JQueryUpload/server/php/upload.php" />
+                <label for="srv-csharp" title="Envia o arquivo par o servidor C#">Servidor C#</label>
+            </span>
+        </p>
+        <p class="comentario">Lembrese me mudar o apontamento para o servidor na sua máquina</p>
+        <h2>Upload sem JQuery</h2>
+        <form action="resultado.html" target="_blank" method="post" enctype="multipart/form-data">
+            <fieldset>
+                <legend>Upload sem JQuery</legend>
+                <div class="arquivo">
+                    <label for="sem-jquery"><span>Selecione um arquivo...</span></label>
+                    <input id="sem-jquery" type="file" name="arquivos[]" />
+                </div>
+                <div class="botao">
+                    <button type="submit"><span>Enviar</span></button>
+                    <button type="reset"><span>Limpar</span></button>
+                </div>
+            </fieldset>
+        </form>
+        <h2>Upload com JQuery</h2>
+        <form action="resultado.html" target="_blank" method="post" enctype="multipart/form-data">
+            <fieldset>
+                <legend>Upload com JQuery</legend>
+                <div class="arquivo">
+                    <label for="com-jquery"><span>Selecione um arquivo...</span></label>
+                    <input id="com-jquery" type="file" name="arquivos[]" />
+                </div>
+            </fieldset>
+        </form>
     </body>
 </html>
