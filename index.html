@@ -36,8 +36,8 @@
             <fieldset>
                 <legend>Upload sem JQuery</legend>
                 <div class="arquivo">
-                    <label for="sem-jquery"><span>Selecione um arquivo...</span></label>
-                    <input id="sem-jquery" type="file" name="arquivos[]" multiple="multiple" />
+                    <label for="sem-jqueryUpload"><span>Selecione um arquivo...</span></label>
+                    <input id="sem-jqueryUpload" type="file" name="arquivos[]" multiple="multiple" />
                 </div>
                 <div class="botao">
                     <button type="submit"><span>Enviar</span></button>
@@ -50,10 +50,47 @@
             <fieldset>
                 <legend>Upload com JQuery</legend>
                 <div class="arquivo">
-                    <label for="com-jquery"><span>Selecione um arquivo...</span></label>
-                    <input id="com-jquery" type="file" name="arquivos[]" multiple="multiple" />
+                    <label class="arraste-aqui" for="com-jqueryUpload"><span>Selecione um arquivo...</span></label>
+                    <input id="com-jqueryUpload" type="file" name="arquivos[]" multiple="multiple" />
                 </div>
             </fieldset>
+            <div class="list-file">
+                <div class="item-file model esconder">
+                    <div class="apaga esconder"><a href="#" title="Clique aqui para apagar o arquivo" target="_blank"><span>apagar</span></a></div>
+                    <div class="remove esconder"><a href="#" title="Clique aqui para remover o arquivo da lista" target="_blank"><span>remover da lista</span></a></div>
+                    <div class="cancela"><a href="#" title="Clique aqui para cancelar" target="_blank"><span>cancelar</span></a></div>
+                    <div class="envia"><a href="#" title="Clique aqui para enviar" target="_blank"><span>enviar</span></a></div>
+                    <div class="info"><a href="#" class="off" title="Clique aqui para ver as informações do arquivo" target="_blank"><span>info</span></a></div>
+                    <div class="titulo">Nome do arquivo</div>
+                    <div class="status esconder">[<strong><span></span></strong>]</div>
+                    <div class="detalhes"></div>
+                </div>
+            </div>
         </form>
+<pre>
+$('#com-jqueryUpload').fileupload({
+    dataType: 'json',
+    dropZone: $('.arraste-aqui'),
+    add: function (e, data) {
+        // É executado quando um ou mais arquivos são selecionados.
+    },
+    done: function (e, data) {
+        // É executado quando um arquivo termina de ser enviado.
+    },
+    fail: function (e, data) {         
+        // É executado quando ocorre um erro no envio do arquivo.
+    },
+    progress: function (e, data) {
+        // É executado durente o envio do arquivo
+        var progress = parseInt(data.loaded / data.total * 100, 10);
+        progress = progress + '%';
+    },
+    progressall: function (e, data) {         
+        // É executado durente o envio do arquivo
+        var progress = parseInt(data.loaded / data.total * 100, 10);
+        progress = progress + '%';            
+    }
+});
+</pre>
     </body>
 </html>
