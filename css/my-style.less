@@ -54,3 +54,71 @@ form {
         }
     }
 }
+
+pre {
+    border: 1px solid #ccc;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background-color:#f6f6f6;
+    padding:1em;
+}
+
+.item-file {
+    > div {
+        display:inline-block;
+        cursor:default;
+        &.detalhes {
+            display:block;
+        }
+        a {
+            display:block;
+            height:32px;
+            width:32px;
+            background-repeat:no-repeat;
+            span{
+                display:none;
+            }
+        }
+        
+        &.apaga a {
+            background-image:url(../img/trash_32.png);
+            &.off {
+                cursor:default;
+                background-image:url(../img/trash_32_off.png);
+            }
+        }
+        &.cancela a {
+            background-image:url(../img/cancel_32.png);
+            &.off {
+                cursor:default;
+                background-image:url(../img/cancel_32_off.png);
+            }
+        }
+        &.envia a {
+            background-image:url(../img/arrow_down_32.png);
+            &.off {
+                cursor:default;
+                background-image:url(../img/arrow_down_32_off.png);
+            }
+        }
+        &.remove a {
+            background-image:url(../img/remove_32.png);
+            &.off {
+                cursor:default;
+                background-image:url(../img/remove_32_off.png);
+            }
+        }
+        &.info a {
+            background-image:url(../img/info_32.png);
+            &.off {
+                cursor:default;
+                background-image:url(../img/info_32_off.png);
+            }
+        }
+    }
+}
+
+.esconder {
+    display:none !important;
+}
