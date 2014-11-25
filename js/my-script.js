@@ -41,7 +41,10 @@ jQuery(document).ready(function ($) {
 	    dataType: 'json',
 	    dropZone: $('.arraste-aqui'),
 	    add: function (e, data) {
-	        data.context = $('.item-file.model').clone().removeClass('esconder model').prependTo($('.list-file'));
+	        data.context = $('.item-file.model').clone()
+                .removeClass('esconder model')
+                .prependTo($('.list-file'));
+
 	        for (pos in data.files) {
 	            data.context.find('.titulo').text(data.files[pos].name);
 	            break;
@@ -55,29 +58,38 @@ jQuery(document).ready(function ($) {
 	        data.context.find('.envia').bind('click', function () {
 	            if (!$(this).find('a').hasClass('off')) {
 	                $(this).find('a').addClass('off');
-	                data.context.find('.status').removeClass('esconder').find('span').text('Aguardando...');
+
+	                data.context.find('.status')
+                        .removeClass('esconder')
+                        .find('span')
+                        .text('Aguardando...');
+
 	                data.submit();
 	            }
 	            return false;
 	        });
 	        data.context.find('.info').bind('click', function () {
 	            if (!$(this).find('a').hasClass('off')) {
-	                $(this).parent().find('.detalhes').stop().slideToggle();
+	                $(this).parent()
+                        .find('.detalhes')
+                        .stop()
+                        .slideToggle();
 	            }
+	            return false;
+	        });
+	        data.context.find('.apaga').bind('click', function () {
+	            $(this).parent().remove();
+	            return false;
+	        });
+	        data.context.find('.remove').bind('click', function () {
+	            $(this).parent().remove();
 	            return false;
 	        });
 	        data.context.find('.detalhes').hide();
 	    },
 	    done: function (e, data) {
 	        data.context.find('.cancela, .envia').addClass('esconder');
-	        data.context.find('.apaga').removeClass('esconder').bind('click', function () {
-	            $(this).parent().remove();
-	            return false;
-	        });
-	        data.context.find('.remove').removeClass('esconder').bind('click', function () {
-	            $(this).parent().remove();
-	            return false;
-	        });
+	        data.context.find('.apaga, .remove').removeClass('esconder');
 	        var items = [];
 	        $.each(data.result.files, function (pos, obj) {
 	            $.each(obj, function (key, val) {
@@ -91,7 +103,7 @@ jQuery(document).ready(function ($) {
 	        data.context.find('.info a').removeClass('off');
 	    },
 	    fail: function (e, data) {
-	        
+	        data.context.find('.status span').text('Erro ao enviar.');
 	    },
 	    progress: function (e, data) {
 	        var progress = parseInt(data.loaded / data.total * 100, 10);
