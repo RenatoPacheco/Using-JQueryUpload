@@ -48,6 +48,7 @@ jQuery(document).ready(function ($) {
 	        }
 	        data.context.find('.cancela').bind('click', function () {
 	            try { data.stop(); } catch (ex) { /* Ignorar */ }
+	            try { data.abort(); } catch (ex) { /* Ignorar */ }
 	            $(this).parent().remove();
 	            return false;
 	        });
