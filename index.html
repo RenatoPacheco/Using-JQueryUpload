@@ -1,0 +1,96 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<title>Using-JQueryUpload</title>
+    <link href="css/normalize.css" rel="stylesheet" type="text/css">
+    <link href="css/my-style.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+    <script type="text/javascript" src="js/plugins/jQuery-File-Upload-9.8.0/js/vendor/jquery.ui.widget.js"></script>
+    <script type="text/javascript" src="js/plugins/jQuery-File-Upload-9.8.0/js/jquery.iframe-transport.js"></script>
+    <script type="text/javascript" src="js/plugins/jQuery-File-Upload-9.8.0/js/jquery.fileupload.js"></script>
+    <script type="text/javascript" src="js/my-script.js"></script>
+</head>
+    <body>
+    	<h1>Using-JQueryUpload</h1>
+        <h2>Servidor</h2>
+        <p>Selecione um servidor para testar:</p>
+        <p>
+            <span>
+                <input id="srv-no" type="radio" name="servidor" value="resultado.html" checked="checked" />
+                <label for="srv-no" title="Envia o arquivo mas não salva no seridor">Resultado Simulado</label>
+            </span>  
+        	<span>
+            	<input id="srv-php" type="radio" name="servidor" value="http://localhost:8888/Using-JQueryUpload/server/php/upload.php" />
+                <label for="srv-php" title="Envia o arquivo para o servidor PHP">Servidor PHP</label>
+            </span>            
+        	<span>
+                <input id="srv-csharp" type="radio" name="servidor" value="http://localhost:11932/Home/Upload" />
+                <label for="srv-csharp" title="Envia o arquivo par o servidor C#">Servidor C#</label>
+            </span>
+        </p>
+        <p class="comentario">Lembre-se de mudar o apontamento para o servidor na sua máquina.</p>
+        <h2>Upload sem JQueryUpload</h2>
+        <form action="resultado.html" target="_blank" method="post" enctype="multipart/form-data">
+            <fieldset>
+                <legend>Upload sem JQuery</legend>
+                <div class="arquivo">
+                    <label for="sem-jqueryUpload"><span>Selecione um arquivo...</span></label>
+                    <input id="sem-jqueryUpload" type="file" name="arquivos[]" multiple="multiple" />
+                </div>
+                <div class="botao">
+                    <button type="submit"><span>Enviar</span></button>
+                    <button type="reset"><span>Limpar</span></button>
+                </div>
+            </fieldset>
+        </form>
+        <h2>Upload com JQueryUpload</h2>
+        <form action="resultado.html" target="_blank" method="post" enctype="multipart/form-data">
+            <fieldset>
+                <legend>Upload com JQuery</legend>
+                <div class="arquivo">
+                    <label class="arraste-aqui" for="com-jqueryUpload"><span>Selecione um arquivo...</span></label>
+                    <input id="com-jqueryUpload" type="file" name="arquivos[]" multiple="multiple" />
+                </div>
+            </fieldset>
+            <div class="list-file">
+                <div class="item-file model esconder">
+                    <div class="apaga esconder"><a href="#" title="Clique aqui para apagar o arquivo" target="_blank"><span>apagar</span></a></div>
+                    <div class="remove esconder"><a href="#" title="Clique aqui para remover o arquivo da lista" target="_blank"><span>remover da lista</span></a></div>
+                    <div class="cancela"><a href="#" title="Clique aqui para cancelar" target="_blank"><span>cancelar</span></a></div>
+                    <div class="envia"><a href="#" title="Clique aqui para enviar" target="_blank"><span>enviar</span></a></div>
+                    <div class="info"><a href="#" class="off" title="Clique aqui para ver as informações do arquivo" target="_blank"><span>info</span></a></div>
+                    <div class="titulo">Nome do arquivo</div>
+                    <div class="status esconder">[<strong><span></span></strong>]</div>
+                    <div class="detalhes"></div>
+                </div>
+            </div>
+        </form>
+<pre>
+$('#com-jqueryUpload').fileupload({
+    dataType: 'json',
+    dropZone: $('.arraste-aqui'),
+    add: function (e, data) {
+        // É executado quando um ou mais arquivos são selecionados.
+    },
+    done: function (e, data) {
+        // É executado quando um arquivo termina de ser enviado.
+    },
+    fail: function (e, data) {         
+        // É executado quando ocorre um erro no envio do arquivo.
+    },
+    progress: function (e, data) {
+        // É executado durente o envio do arquivo
+        var progress = parseInt(data.loaded / data.total * 100, 10);
+        progress = progress + '%';
+    },
+    progressall: function (e, data) {         
+        // É executado durente o envio do arquivo
+        var progress = parseInt(data.loaded / data.total * 100, 10);
+        progress = progress + '%';            
+    }
+});
+</pre>
+    </body>
+</html>
